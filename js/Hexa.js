@@ -73,28 +73,28 @@ document.querySelector("#postForm").addEventListener("submit", (e) => {
 
     document.querySelector("#allPostsWrapper").innerHTML =
       `<div class="single-post" data-post_id="${post.id}">
-                                                                <div class="post-content">${post.content}</div>
+        <div class="post-content">${post.content}</div>
 
-                                                                <div class="post-actions">
-                                                                  <p>Author: ${current_user.username}</p>
-                                                                  <div>
+         <div class="post-actions">
+             <p>Author: ${current_user.username}</p>
+             <div>
 
-                                                                    <button onclick="likePost(this)" class="likePostJS like-btn"><span>${post.likes}</span>Likes</button>
+           <button onclick="likePost(this)" class="likePostJS like-btn"><span>${post.likes}</span>Likes</button>
 
-                                                                    <button class="comment-btn" onclick="commentPost(this)">Comment</button>
+           <button class="comment-btn" onclick="commentPost(this)">Comment</button>
 
-                                                                    ${delete_post_html}
+             ${delete_post_html}
 
-                                                                  </div>
-                                                                </div>  
+            </div>
+          </div>  
 
-                                                                <div class="post-comments">
-                                                                  <form>
-                                                                    <input type="text">
-                                                                    <button onclick="commentPostSubmit(event)">Comment</button>
-                                                                  </form>
-                                                                </div>
-                                                            </div>` + html;
+        <div class="post-comments">
+        <form>
+        <input type="text">
+        <button onclick="commentPostSubmit(event)">Comment</button>
+        </form>
+        </div>
+        </div>` + html;
   }
   createPost();
 });
@@ -188,12 +188,12 @@ const removeMyPost = (btn) => {
 };
 
 const likePost = (btn) => {
-  let main_post_el = btn.closest('.single-post');
+  let main_post_el = btn.closest(".single-post");
   let post_id = btn.closest(".single-post").getAttribute("data-post_id");
-  let numberOfLikes = parseInt(btn.querySelector('span').innerText);
+  let numberOfLikes = parseInt(btn.querySelector("span").innerText);
 
-  btn.querySelector('span').innerText = numberOfLikes + 1;
-  btn.setAttribute('disable', 'true');
+  btn.querySelector("span").innerText = numberOfLikes + 1;
+  btn.setAttribute("disable", "true");
 
   let post = new Post();
   post.like(post_id, numberOfLikes + 1);
